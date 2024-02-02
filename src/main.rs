@@ -13,11 +13,13 @@ fn main() {
         )
         .arg(Arg::new("no_newline")
             .short('n')
-            .action(clap::ArgAction::SetFalse)
+            .action(clap::ArgAction::SetFalse) // no value is allowed
             .help("Do not print the trailing newline character.")
         )
         .after_help("This is the Rust version of the well known echo command.")
         .get_matches();
 
     println!("{:#?}", matches);
+
+    // TODO: Create program output
 }
