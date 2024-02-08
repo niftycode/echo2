@@ -21,5 +21,7 @@ fn main() {
 
     println!("{:#?}", matches);
 
-    // TODO: Create program output
+    // Note: If we call unwrap() on a None value, it will cause a panic!
+    let _text = matches.value_source("text").unwrap();
+
 }
