@@ -11,17 +11,34 @@ fn main() {
             .required(true)
 
         )
-        .arg(Arg::new("no_newline")
-            .short('n')
-            .action(clap::ArgAction::SetFalse) // no value is allowed
-            .help("Do not print the trailing newline character.")
-        )
+        // TODO: Add subcommand here
+
+        // .arg(Arg::new("no_newline")
+        //     .short('n')
+        //     .action(clap::ArgAction::SetFalse) // no value is allowed
+        //     .help("Do not print the trailing newline character.")
+        // )
+
+
         .after_help("This is the Rust version of the well known echo command.")
         .get_matches();
 
-    println!("{:#?}", matches);
+    // println!("{:#?}", matches);
 
-    // Note: If we call unwrap() on a None value, it will cause a panic!
-    let _text = matches.value_source("text").unwrap();
+    if let Some(text) = matches.get_one::<String>("text") {
+        println!("Value for the user's input: {text}");
+    }
+
+
+
+    /*
+    if let Some(matches) = matches.subcommand_matches("text") {
+        if matches.get_flag("no_newline") {
+            println!("Add no new line...");
+        } else {
+            println!("Add new line...");
+        }
+    }
+     */
 
 }
